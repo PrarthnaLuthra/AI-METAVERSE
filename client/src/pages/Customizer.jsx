@@ -34,11 +34,31 @@ function Customizer() {
       case "filepicker":
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />;
       case "aipicker":
-        return <AIPicker />;
+        return (
+          <AIPicker
+            prompt={prompt}
+            setPrompt={setPrompt}
+            generatingImg={generatingImg}
+            handleSubmit={handleSubmit}
+          />
+        );
       default:
         return null;
     }
   };
+
+  const handleSubmit = async(type)=>{
+    if(!prompt) return alert("Please enter a prompt");
+    try {
+        // call backend to generate ai image
+        
+    } catch (error) {
+        alert(error)
+    }finally{
+        setGeneratingImg(false);
+        setActiveEditorTab("");
+    }
+  }
 
   const handleActiveFilterTab = (tabName) => {
     switch (tabName) {
@@ -53,12 +73,12 @@ function Customizer() {
         state.isFullTexture = false;
         break;
     }
-    setActiveFilterTab((prevState)=>{
-        return{
-            ...prevState,
-            [tabName]:!prevState[tabName]
-        }
-    })
+    setActiveFilterTab((prevState) => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName],
+      };
+    });
   };
 
   const handleDecals = (type, result) => {
