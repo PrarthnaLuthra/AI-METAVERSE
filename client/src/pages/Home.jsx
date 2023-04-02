@@ -7,6 +7,7 @@ import {
   headContentAnimation,
   slideAnimation,
 } from "../config/motion";
+import { CustomButton } from "../components";
 
 function Home() {
   const snap = useSnapshot(state);
@@ -28,13 +29,23 @@ function Home() {
                 LET'S <br className="xl:block hidden" /> STYLE IT.
               </h1>
             </motion.div>
-            <motion.div {...headContentAnimation} className="flex flex-col gap-5">
+            <motion.div
+              {...headContentAnimation}
+              className="flex flex-col gap-5"
+            >
               <p className="max-w-md font-normal text-gray-600 text-base">
                 Customise it, own it here at TPV with our Brand-new 3D
                 customization tool.
                 <strong> Unleash your imagination</strong> and define your own
                 style.
               </p>
+
+              <CustomButton
+                type="filled"
+                title="Customize it"
+                handleClick={() => (state.intro = false)}
+                customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+              />
             </motion.div>
           </motion.div>
         </motion.section>
