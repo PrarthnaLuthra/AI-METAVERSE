@@ -15,7 +15,7 @@ function CanvasModel() {
       <ambientLight intensity={0.5} />
       <Environment preset="city" />
       <CameraRig>
-        <Backdrop />
+        {/* <Backdrop /> */}
         <Center>
           <Shirt />
         </Center>
